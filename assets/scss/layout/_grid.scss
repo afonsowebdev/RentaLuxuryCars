@@ -1,0 +1,38 @@
+// Sistema de grid próprio
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+.grid {
+  display: grid;
+  gap: sp('xl');
+  grid-template-columns: repeat(1, 1fr);
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--2-col {
+    grid-template-columns: repeat(1, 1fr);
+    @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  &--4-col {
+    grid-template-columns: repeat(1, 1fr);
+    @include respond-to('sm') { grid-template-columns: repeat(2, 1fr); }
+    @include respond-to('xl') { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  &--gap-sm { gap: sp('md'); }
+  &--gap-lg { gap: sp('2xl'); }
+}
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: sp('xl');
+}

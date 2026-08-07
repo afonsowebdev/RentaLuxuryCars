@@ -1,0 +1,80 @@
+// ============================================================
+// BOTÕES — RentaLuxuryCars
+// Usa mixins e variáveis dos abstracts
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.btn {
+  @include btn-reset;
+  display: inline-flex;
+  align-items: center;
+  gap: sp('sm');
+  padding: sp('md') sp('xl');
+  font-family: $font-corpo;
+  font-size: tipo('sm');
+  font-weight: $peso-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: raio('sm');
+  transition: all $trans-normal;
+  cursor: pointer;
+  white-space: nowrap;
+
+  // --- Variante primária (dourado preenchido) ---
+  &--primario {
+    background: $grad-ouro;
+    color: $cor-preto;
+    border: 1px solid transparent;
+    box-shadow: $sombra-ouro;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $sombra-ouro-lg;
+      filter: brightness(1.1);
+    }
+    &:active { transform: translateY(0); }
+  }
+
+  // --- Variante secundária (outlined dourado) ---
+  &--secundario {
+    background: transparent;
+    color: $cor-ouro;
+    @include borda-ouro(0.6);
+
+    &:hover {
+      background: rgba($cor-ouro, 0.1);
+      border-color: $cor-ouro;
+      box-shadow: $sombra-ouro;
+    }
+  }
+
+  // --- Variante ghost (branco subtil) ---
+  &--ghost {
+    background: rgba($cor-branco, 0.05);
+    color: $cor-branco;
+    border: 1px solid rgba($cor-branco, 0.15);
+
+    &:hover {
+      background: rgba($cor-branco, 0.1);
+      border-color: rgba($cor-branco, 0.3);
+    }
+  }
+
+  // --- Tamanhos ---
+  &--sm  { padding: sp('sm') sp('lg'); font-size: tipo('xs'); }
+  &--lg  { padding: sp('lg') sp('2xl'); font-size: tipo('md'); }
+  &--full { width: 100%; justify-content: center; }
+
+  // --- Estado desactivado ---
+  &:disabled, &--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // --- Ícone à direita ---
+  &__icon { font-size: 0.85em; }
+}

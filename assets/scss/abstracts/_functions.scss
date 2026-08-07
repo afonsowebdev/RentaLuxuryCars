@@ -1,0 +1,68 @@
+// ============================================================
+// FUNÇÕES SCSS — RentaLuxuryCars
+// ============================================================
+
+@use 'sass:math';
+@use 'variables' as *;
+
+// Converter px para rem
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// Buscar cor do mapa $cores
+@function cor($nome) {
+  @if map-has-key($cores, $nome) {
+    @return map-get($cores, $nome);
+  }
+  @warn "Cor `#{$nome}` não encontrada em $cores.";
+  @return null;
+}
+
+// Buscar espaçamento do mapa $espaco
+@function sp($tamanho) {
+  @if map-has-key($espaco, $tamanho) {
+    @return map-get($espaco, $tamanho);
+  }
+  @warn "Espaçamento `#{$tamanho}` não encontrado em $espaco.";
+  @return null;
+}
+
+// Buscar tipografia do mapa $tipo-escala
+@function tipo($tamanho) {
+  @if map-has-key($tipo-escala, $tamanho) {
+    @return map-get($tipo-escala, $tamanho);
+  }
+  @warn "Tamanho de tipo `#{$tamanho}` não encontrado em $tipo-escala.";
+  @return null;
+}
+
+// Buscar z-index do mapa $z
+@function z($camada) {
+  @if map-has-key($z, $camada) {
+    @return map-get($z, $camada);
+  }
+  @warn "Z-index `#{$camada}` não encontrado em $z.";
+  @return null;
+}
+
+// Buscar raio do mapa $raio
+@function raio($tamanho) {
+  @if map-has-key($raio, $tamanho) {
+    @return map-get($raio, $tamanho);
+  }
+  @return $tamanho; // fallback para valor directo
+}
+
+// Tipografia fluida: escala entre dois tamanhos conforme viewport
+// Uso: font-size: fluid-type(16px, 24px, 320px, 1280px)
+@function fluid-type($min-size, $max-size, $min-vp: 320px, $max-vp: 1280px) {
+  $slope: math.div($max-size - $min-size, $max-vp - $min-vp);
+  $intercept: $min-size - $slope * $min-vp;
+  @return clamp(#{$min-size}, #{$slope * 100vw + $intercept}, #{$max-size});
+}
+
+// Adicionar transparência a uma cor SCSS
+@function alfa($cor, $opacidade) {
+  @return rgba($cor, $opacidade);
+}

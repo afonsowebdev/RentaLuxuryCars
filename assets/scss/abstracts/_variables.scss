@@ -1,0 +1,145 @@
+// ============================================================
+// TOKENS DE DESIGN — RentaLuxuryCars
+// Toda a identidade visual parte daqui.
+// ============================================================
+
+// --- Paleta de Cores ---
+$cor-ouro:          #C9A84C;
+$cor-ouro-claro:    #E8C96B;
+$cor-ouro-escuro:   #9B7D35;
+$cor-ouro-muted:    rgba(#C9A84C, 0.15);
+
+$cor-preto:         #0A0A0A;
+$cor-carbon:        #111111;
+$cor-grafite:       #1A1A1A;
+$cor-grafite-md:    #252525;
+$cor-grafite-claro: #333333;
+
+$cor-branco:        #FAFAFA;
+$cor-cinza-claro:   #C0C0C0;
+$cor-cinza-md:      #808080;
+$cor-cinza-escuro:  #404040;
+
+$cor-sucesso:       #4CAF7C;
+$cor-erro:          #E53E3E;
+$cor-aviso:         #F6AD55;
+$cor-info:          #4A9EF0;
+
+// Mapa de cores para loops e funções
+$cores: (
+  'ouro':          $cor-ouro,
+  'ouro-claro':    $cor-ouro-claro,
+  'ouro-escuro':   $cor-ouro-escuro,
+  'preto':         $cor-preto,
+  'carbon':        $cor-carbon,
+  'grafite':       $cor-grafite,
+  'branco':        $cor-branco,
+  'cinza-claro':   $cor-cinza-claro,
+  'sucesso':       $cor-sucesso,
+  'erro':          $cor-erro,
+  'aviso':         $cor-aviso,
+);
+
+// --- Gradientes ---
+$grad-ouro:      linear-gradient(135deg, $cor-ouro 0%, $cor-ouro-claro 50%, $cor-ouro-escuro 100%);
+$grad-ouro-h:    linear-gradient(90deg, $cor-ouro-escuro 0%, $cor-ouro-claro 100%);
+$grad-hero:      linear-gradient(180deg, rgba($cor-preto, 0) 0%, rgba($cor-preto, 0.7) 60%, $cor-preto 100%);
+$grad-card:      linear-gradient(180deg, transparent 50%, rgba($cor-preto, 0.95) 100%);
+$grad-overlay:   linear-gradient(135deg, rgba($cor-preto, 0.9) 0%, rgba($cor-grafite, 0.8) 100%);
+
+// --- Tipografia ---
+$font-display:   'Playfair Display', Georgia, serif;
+$font-corpo:     'Inter', system-ui, -apple-system, sans-serif;
+$font-mono:      'JetBrains Mono', 'Courier New', monospace;
+
+// Escala tipográfica (Major Third — 1.250)
+$tipo-escala: (
+  'xs':    0.64rem,    //  ~10px
+  'sm':    0.8rem,     //  ~13px
+  'base':  1rem,       //  16px
+  'md':    1.25rem,    //  20px
+  'lg':    1.563rem,   //  25px
+  'xl':    1.953rem,   //  31px
+  '2xl':   2.441rem,   //  39px
+  '3xl':   3.052rem,   //  49px
+  '4xl':   3.815rem,   //  61px
+  '5xl':   4.768rem,   //  76px
+);
+
+$peso-regular:   400;
+$peso-medium:    500;
+$peso-semibold:  600;
+$peso-bold:      700;
+$peso-black:     900;
+
+$line-height-apertado:  1.2;
+$line-height-normal:    1.5;
+$line-height-largo:     1.8;
+
+// --- Espaçamentos ---
+$espaco: (
+  'xs':   0.25rem,   //  4px
+  'sm':   0.5rem,    //  8px
+  'md':   1rem,      //  16px
+  'lg':   1.5rem,    //  24px
+  'xl':   2rem,      //  32px
+  '2xl':  3rem,      //  48px
+  '3xl':  4rem,      //  64px
+  '4xl':  6rem,      //  96px
+  '5xl':  8rem,      // 128px
+);
+
+// --- Breakpoints ---
+$breakpoints: (
+  'xs':   480px,
+  'sm':   640px,
+  'md':   768px,
+  'lg':   1024px,
+  'xl':   1280px,
+  '2xl':  1536px,
+);
+
+// --- Bordas e Raios ---
+$raio: (
+  'xs':     2px,
+  'sm':     4px,
+  'md':     8px,
+  'lg':     12px,
+  'xl':     20px,
+  '2xl':    32px,
+  'full':   9999px,
+);
+
+$border-ouro:    1px solid rgba($cor-ouro, 0.3);
+$border-grafite: 1px solid $cor-grafite-md;
+$border-branco:  1px solid rgba($cor-branco, 0.1);
+
+// --- Sombras ---
+$sombra-ouro:    0 0 30px rgba($cor-ouro, 0.2);
+$sombra-ouro-lg: 0 0 60px rgba($cor-ouro, 0.35);
+$sombra-card:    0 8px 32px rgba(#000, 0.6);
+$sombra-hover:   0 20px 60px rgba(#000, 0.8);
+$sombra-navbar:  0 4px 24px rgba(#000, 0.5);
+
+// --- Transições ---
+$trans-rapida:   150ms ease;
+$trans-normal:   300ms ease;
+$trans-suave:    500ms cubic-bezier(0.4, 0, 0.2, 1);
+$trans-spring:   600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// --- Z-Index ---
+$z: (
+  'base':     1,
+  'dropdown': 100,
+  'sticky':   200,
+  'overlay':  300,
+  'modal':    400,
+  'toast':    500,
+  'tooltip':  600,
+);
+
+// --- Layout ---
+$max-width:        1280px;
+$max-width-texto:  720px;
+$navbar-altura:    80px;
+$sidebar-largura:  260px;

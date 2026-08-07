@@ -1,0 +1,157 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.card-veiculo {
+  position: relative;
+  background: $cor-carbon;
+  border-radius: raio('lg');
+  @include borda-ouro(0.15);
+  overflow: hidden;
+  transition: transform $trans-normal, box-shadow $trans-normal, border-color $trans-normal;
+  @include scrollbar-custom;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $sombra-hover;
+    border-color: rgba($cor-ouro, 0.4);
+
+    .card-veiculo__imagem img {
+      transform: scale(1.05);
+    }
+  }
+
+  // Imagem
+  &__imagem {
+    @include aspect-ratio(16, 9);
+    overflow: hidden;
+    position: relative;
+
+    img {
+      transition: transform $trans-suave;
+    }
+  }
+
+  // Overlay sobre imagem
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: $grad-card;
+    pointer-events: none;
+  }
+
+  // Badge de categoria
+  &__badge {
+    position: absolute;
+    top: sp('md');
+    left: sp('md');
+  }
+
+  // Conteúdo
+  &__corpo {
+    padding: sp('lg');
+  }
+
+  &__marca {
+    font-size: tipo('xs');
+    color: $cor-ouro;
+    font-weight: $peso-semibold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: sp('xs');
+  }
+
+  &__nome {
+    font-family: $font-display;
+    font-size: tipo('lg');
+    color: $cor-branco;
+    font-weight: $peso-bold;
+    margin-bottom: sp('sm');
+    @include truncar(2);
+  }
+
+  &__specs {
+    display: flex;
+    gap: sp('md');
+    margin-bottom: sp('lg');
+    color: $cor-cinza-claro;
+    font-size: tipo('xs');
+    flex-wrap: wrap;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: sp('xs');
+
+      i { color: $cor-ouro; }
+    }
+  }
+
+  &__rodape {
+    @include flex-between;
+    padding-top: sp('md');
+    border-top: $border-grafite;
+  }
+
+  &__preco {
+    &-valor {
+      font-family: $font-display;
+      font-size: tipo('xl');
+      font-weight: $peso-bold;
+      @include texto-gradiente($grad-ouro);
+    }
+    &-label {
+      font-size: tipo('xs');
+      color: $cor-cinza-md;
+    }
+  }
+}
+
+// --- Card genérico (usado em "Porquê a RentaLuxuryCars", passos, etc.) ---
+.card {
+  background: $cor-carbon;
+  border-radius: raio('lg');
+  border: $border-grafite;
+  padding: sp('2xl');
+  transition: all $trans-normal;
+
+  &:hover {
+    border-color: rgba($cor-ouro, 0.35);
+    transform: translateY(-4px);
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 56px;
+    height: 56px;
+    border-radius: raio('md');
+    background: $cor-ouro-muted;
+    color: $cor-ouro;
+    font-size: tipo('lg');
+    margin-bottom: sp('lg');
+  }
+
+  &__titulo {
+    font-size: tipo('lg');
+    margin-bottom: sp('sm');
+  }
+
+  &__texto {
+    color: $cor-cinza-claro;
+    font-size: tipo('sm');
+  }
+}
+
+// --- Card de depoimento ---
+.card-depoimento {
+  background: $cor-carbon;
+  border: $border-grafite;
+  border-radius: raio('lg');
+  padding: sp('2xl');
+
+  &__estrelas { color: $cor-ouro; margin-bottom: sp('md'); }
+  &__texto { color: $cor-cinza-claro; font-style: italic; margin-bottom: sp('lg'); }
+  &__autor { display: flex; align-items: center; gap: sp('md'); }
+  &__nome { font-weight: $peso-semibold; color: $cor-branco; }
+  &__origem { font-size: tipo('xs'); color: $cor-cinza-md; }
+}

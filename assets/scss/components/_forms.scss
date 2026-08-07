@@ -1,0 +1,185 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.campo {
+  margin-bottom: sp('lg');
+
+  label {
+    display: block;
+    font-size: tipo('xs');
+    font-weight: $peso-semibold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $cor-cinza-claro;
+    margin-bottom: sp('sm');
+
+    .obrigatorio { color: $cor-ouro; }
+  }
+
+  &--erro input,
+  &--erro select,
+  &--erro textarea {
+    border-color: $cor-erro;
+  }
+
+  &__mensagem-erro {
+    display: block;
+    font-size: tipo('xs');
+    color: $cor-erro;
+    margin-top: sp('xs');
+  }
+
+  &__ajuda {
+    display: block;
+    font-size: tipo('xs');
+    color: $cor-cinza-md;
+    margin-top: sp('xs');
+  }
+}
+
+.input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  background: $cor-grafite;
+  border: 1px solid $cor-grafite-md;
+  border-radius: raio('sm');
+  padding: sp('md');
+  color: $cor-branco;
+  font-size: tipo('sm');
+  transition: border-color $trans-rapida, box-shadow $trans-rapida;
+
+  &::placeholder { color: $cor-cinza-md; }
+
+  &:focus {
+    outline: none;
+    border-color: $cor-ouro;
+    box-shadow: 0 0 0 3px rgba($cor-ouro, 0.15);
+  }
+}
+
+textarea { min-height: 140px; resize: vertical; }
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23C9A84C' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right sp('md') center;
+  padding-right: sp('2xl');
+}
+
+.campo-grupo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('lg');
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// --- Checkbox / Radio estilizados ---
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: sp('sm');
+  cursor: pointer;
+  font-size: tipo('sm');
+  color: $cor-cinza-claro;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: $cor-ouro;
+    cursor: pointer;
+  }
+}
+
+// --- Barra de reserva rápida ---
+.barra-reserva {
+  @include glass(14px, rgba($cor-carbon, 0.75));
+  @include borda-ouro(0.2);
+  border-radius: raio('lg');
+  padding: sp('lg');
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('md');
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr) auto;
+    align-items: end;
+  }
+
+  .campo { margin-bottom: 0; }
+}
+
+// --- Barra de progresso multi-step ---
+.progresso-passos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: sp('3xl');
+  max-width: 560px;
+
+  &__passo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: sp('sm');
+    flex: 1;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 55%;
+      width: 90%;
+      height: 2px;
+      background: $cor-grafite-md;
+      z-index: 0;
+    }
+
+    &.concluido:not(:last-child)::after,
+    &.ativo:not(:last-child)::after {
+      background: $grad-ouro-h;
+    }
+  }
+
+  &__numero {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: raio('full');
+    background: $cor-grafite;
+    border: 1px solid $cor-grafite-md;
+    color: $cor-cinza-claro;
+    font-weight: $peso-bold;
+    font-size: tipo('sm');
+    z-index: 1;
+    transition: all $trans-normal;
+  }
+
+  &__passo.ativo &__numero,
+  &__passo.concluido &__numero {
+    background: $grad-ouro;
+    border-color: transparent;
+    color: $cor-preto;
+  }
+
+  &__label {
+    font-size: tipo('xs');
+    color: $cor-cinza-md;
+    text-align: center;
+  }
+
+  &__passo.ativo &__label { color: $cor-ouro; }
+}

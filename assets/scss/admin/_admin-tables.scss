@@ -1,0 +1,74 @@
+// Tabelas de dados do painel admin
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.tabela-wrapper {
+  overflow-x: auto;
+  @include scrollbar-custom;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: tipo('sm');
+
+  thead th {
+    text-align: left;
+    padding: sp('md');
+    color: $cor-ouro;
+    font-size: tipo('xs');
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $cor-grafite-md;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: sp('md');
+    border-bottom: $border-grafite;
+    color: $cor-cinza-claro;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background $trans-rapida;
+    &:hover { background: rgba($cor-ouro, 0.04); }
+  }
+
+  &__imagem {
+    width: 56px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: raio('xs');
+  }
+
+  &__acoes {
+    display: flex;
+    gap: sp('sm');
+
+    a, button {
+      @include flex-center;
+      @include btn-reset;
+      width: 32px; height: 32px;
+      border-radius: raio('sm');
+      color: $cor-cinza-claro;
+      border: $border-grafite;
+      transition: all $trans-rapida;
+
+      &:hover { color: $cor-ouro; border-color: rgba($cor-ouro, 0.4); }
+      &.perigo:hover { color: $cor-erro; border-color: rgba($cor-erro, 0.4); }
+    }
+  }
+}
+
+.tabela-topo {
+  @include flex-between;
+  margin-bottom: sp('lg');
+  flex-wrap: wrap;
+  gap: sp('md');
+
+  &__pesquisa {
+    max-width: 280px;
+  }
+}

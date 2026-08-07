@@ -1,0 +1,122 @@
+// Navegação principal
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/placeholders';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: z('sticky');
+  height: $navbar-altura;
+  background: transparent;
+  transition: background-color $trans-normal, box-shadow $trans-normal, border-color $trans-normal;
+  border-bottom: 1px solid transparent;
+
+  &--scrolled,
+  &.navbar--scrolled {
+    background: rgba($cor-preto, 0.92);
+    @include glass(10px, rgba($cor-preto, 0.82));
+    border-bottom-color: rgba($cor-ouro, 0.15);
+    box-shadow: $sombra-navbar;
+  }
+
+  &__container {
+    @include container;
+    height: 100%;
+    @include flex-between;
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-size: tipo('lg');
+    font-weight: $peso-bold;
+    color: $cor-branco;
+    letter-spacing: 0.02em;
+  }
+
+  &__logo-acento {
+    @include texto-gradiente($grad-ouro);
+  }
+
+  &__toggle {
+    @include btn-reset;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: z('sticky');
+
+    span {
+      width: 26px;
+      height: 2px;
+      background: $cor-branco;
+      transition: transform $trans-normal, opacity $trans-normal;
+    }
+
+    @include respond-to('lg') { display: none; }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: sp('2xl');
+
+    @include respond-below('lg') {
+      position: fixed;
+      inset: 0;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba($cor-preto, 0.98);
+      transform: translateX(100%);
+      transition: transform $trans-suave;
+
+      &.navbar__menu--aberto {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__lista {
+    @extend %reset-list;
+    display: flex;
+    align-items: center;
+    gap: sp('xl');
+
+    @include respond-below('lg') {
+      flex-direction: column;
+      gap: sp('2xl');
+    }
+
+    a {
+      font-size: tipo('sm');
+      font-weight: $peso-medium;
+      letter-spacing: 0.03em;
+      color: $cor-cinza-claro;
+      transition: color $trans-rapida;
+      position: relative;
+
+      &:hover, &.ativo {
+        color: $cor-ouro;
+      }
+    }
+  }
+
+  &__acoes {
+    display: flex;
+    align-items: center;
+    gap: sp('lg');
+
+    @include respond-below('lg') {
+      margin-top: sp('2xl');
+    }
+  }
+
+  &__utilizador {
+    font-size: tipo('sm');
+    color: $cor-cinza-claro;
+
+    i { color: $cor-ouro; margin-right: sp('xs'); }
+  }
+}

@@ -1,0 +1,70 @@
+// Escala tipográfica global
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: $peso-bold;
+  line-height: $line-height-apertado;
+  color: $cor-branco;
+}
+
+h1 { font-size: tipo('4xl'); }
+h2 { font-size: tipo('3xl'); }
+h3 { font-size: tipo('2xl'); }
+h4 { font-size: tipo('xl'); }
+h5 { font-size: tipo('lg'); }
+h6 { font-size: tipo('md'); }
+
+@include respond-below('md') {
+  h1 { font-size: tipo('3xl'); }
+  h2 { font-size: tipo('2xl'); }
+  h3 { font-size: tipo('xl'); }
+}
+
+p { line-height: $line-height-largo; color: $cor-cinza-claro; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: tipo('xs');
+  font-weight: $peso-semibold;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $cor-ouro;
+  margin-bottom: sp('sm');
+}
+
+.titulo-secao {
+  font-size: tipo('3xl');
+  margin-bottom: sp('md');
+
+  span {
+    @include texto-gradiente($grad-ouro);
+  }
+}
+
+.subtitulo-secao {
+  max-width: $max-width-texto;
+  color: $cor-cinza-claro;
+  font-size: tipo('md');
+  margin-bottom: sp('2xl');
+}
+
+.texto-ouro { color: $cor-ouro; }
+.texto-gradiente { @include texto-gradiente($grad-ouro); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

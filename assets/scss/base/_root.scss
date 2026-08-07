@@ -1,0 +1,41 @@
+// Expõe os tokens SCSS como CSS custom properties
+// Permite uso via var(--cor-ouro) no JavaScript e inline styles
+@use '../abstracts/variables' as *;
+
+:root {
+  // Cores
+  --cor-ouro:          #{$cor-ouro};
+  --cor-ouro-claro:    #{$cor-ouro-claro};
+  --cor-ouro-escuro:   #{$cor-ouro-escuro};
+  --cor-preto:         #{$cor-preto};
+  --cor-carbon:        #{$cor-carbon};
+  --cor-grafite:       #{$cor-grafite};
+  --cor-grafite-md:    #{$cor-grafite-md};
+  --cor-branco:        #{$cor-branco};
+  --cor-cinza-claro:   #{$cor-cinza-claro};
+  --cor-sucesso:       #{$cor-sucesso};
+  --cor-erro:          #{$cor-erro};
+  --cor-aviso:         #{$cor-aviso};
+
+  // Gradientes
+  --grad-ouro:         #{$grad-ouro};
+  --grad-hero:         #{$grad-hero};
+
+  // Tipografia
+  --font-display:      #{$font-display};
+  --font-corpo:        #{$font-corpo};
+
+  // Layout
+  --navbar-altura:     #{$navbar-altura};
+  --sidebar-largura:   #{$sidebar-largura};
+  --max-width:         #{$max-width};
+
+  // Transições
+  --trans-rapida:      #{$trans-rapida};
+  --trans-normal:      #{$trans-normal};
+  --trans-suave:       #{$trans-suave};
+
+  // Sombras
+  --sombra-ouro:       #{$sombra-ouro};
+  --sombra-card:       #{$sombra-card};
+}

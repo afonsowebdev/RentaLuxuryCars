@@ -1,0 +1,59 @@
+// Formulário multi-step
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.pagina-reserva {
+  padding-top: calc(#{$navbar-altura} + #{sp('3xl')});
+  min-height: 80vh;
+}
+
+.reserva-passo {
+  display: none;
+  background: $cor-carbon;
+  border: $border-grafite;
+  border-radius: raio('lg');
+  padding: sp('2xl');
+
+  &.ativo {
+    display: block;
+    animation: fadeIn $trans-suave;
+  }
+}
+
+.reserva-resumo-veiculo {
+  display: flex;
+  align-items: center;
+  gap: sp('lg');
+  padding: sp('lg');
+  background: $cor-grafite;
+  border-radius: raio('md');
+  margin-bottom: sp('xl');
+
+  img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: raio('sm');
+  }
+
+  h4 { font-size: tipo('md'); margin-bottom: sp('xs'); }
+  span { color: $cor-ouro; font-size: tipo('sm'); }
+}
+
+.reserva-navegacao {
+  @include flex-between;
+  margin-top: sp('2xl');
+  padding-top: sp('xl');
+  border-top: $border-grafite;
+}
+
+.reserva-total-flutuante {
+  @include flex-between;
+  padding: sp('lg');
+  background: $cor-grafite;
+  border-radius: raio('md');
+  margin-top: sp('xl');
+
+  strong { @include texto-gradiente($grad-ouro); font-size: tipo('lg'); font-family: $font-display; }
+}

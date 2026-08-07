@@ -1,0 +1,106 @@
+// Rodapé
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/placeholders';
+
+.footer {
+  background: $cor-carbon;
+  border-top: $border-grafite;
+  padding-top: sp('4xl');
+
+  &__container {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: sp('2xl');
+    padding-bottom: sp('3xl');
+
+    @include respond-to('md') {
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    }
+  }
+
+  &__coluna {
+    h4 {
+      font-family: $font-corpo;
+      font-size: tipo('sm');
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $cor-ouro;
+      margin-bottom: sp('lg');
+    }
+
+    ul { @extend %reset-list; display: flex; flex-direction: column; gap: sp('sm'); }
+
+    a {
+      color: $cor-cinza-claro;
+      font-size: tipo('sm');
+      transition: color $trans-rapida;
+      &:hover { color: $cor-ouro; }
+    }
+  }
+
+  &__coluna--marca {
+    max-width: 320px;
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-size: tipo('xl');
+    font-weight: $peso-bold;
+    color: $cor-branco;
+  }
+
+  &__logo-acento { @include texto-gradiente($grad-ouro); }
+
+  &__descricao {
+    margin: sp('md') 0 sp('lg');
+    font-size: tipo('sm');
+    color: $cor-cinza-md;
+  }
+
+  &__social {
+    display: flex;
+    gap: sp('md');
+
+    a {
+      @include flex-center;
+      width: 38px;
+      height: 38px;
+      border-radius: raio('full');
+      @include borda-ouro(0.25);
+      color: $cor-ouro;
+      transition: all $trans-normal;
+
+      &:hover {
+        background: $cor-ouro;
+        color: $cor-preto;
+      }
+    }
+  }
+
+  &__contactos {
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: sp('sm');
+      font-size: tipo('sm');
+      color: $cor-cinza-claro;
+      margin-bottom: sp('sm');
+
+      i { color: $cor-ouro; margin-top: 3px; }
+    }
+  }
+
+  &__base {
+    border-top: $border-grafite;
+    padding: sp('lg') 0;
+    text-align: center;
+
+    p {
+      font-size: tipo('xs');
+      color: $cor-cinza-md;
+    }
+  }
+}

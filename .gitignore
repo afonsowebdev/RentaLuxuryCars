@@ -1,0 +1,15 @@
+# Dependências
+/node_modules/
+/vendor/
+
+# Ambiente
+.env
+
+# CSS compilado (gerado por `npm run sass:build` / `sass:watch`)
+/assets/css/*.css
+/assets/css/*.css.map
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log

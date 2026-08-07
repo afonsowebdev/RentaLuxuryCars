@@ -1,0 +1,58 @@
+// Página Sobre Nós
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.pagina-sobre {
+  padding-top: $navbar-altura;
+}
+
+.sobre-hero {
+  @include secao('3xl');
+  text-align: center;
+  background: $grad-overlay;
+}
+
+.sobre-historia {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('2xl');
+  align-items: center;
+
+  @include respond-to('md') { grid-template-columns: 1fr 1fr; }
+
+  img { border-radius: raio('lg'); }
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('xl');
+
+  @include respond-to('sm') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('lg') { grid-template-columns: repeat(3, 1fr); }
+}
+
+.equipa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: sp('xl');
+
+  @include respond-to('md') { grid-template-columns: repeat(4, 1fr); }
+}
+
+.equipa-membro {
+  text-align: center;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: raio('full');
+    margin-bottom: sp('md');
+    @include borda-ouro(0.3);
+  }
+
+  h4 { font-size: tipo('md'); }
+  span { color: $cor-ouro; font-size: tipo('xs'); text-transform: uppercase; letter-spacing: 0.06em; }
+}

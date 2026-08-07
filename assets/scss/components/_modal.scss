@@ -1,0 +1,77 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+@use '../abstracts/placeholders';
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($cor-preto, 0.85);
+  z-index: z('modal');
+  @include flex-center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $trans-normal, visibility $trans-normal;
+  padding: sp('lg');
+
+  &.aberto {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  background: $cor-carbon;
+  border-radius: raio('lg');
+  @include borda-ouro(0.2);
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  @include scrollbar-custom;
+  transform: scale(0.95);
+  transition: transform $trans-spring;
+
+  .modal-overlay.aberto & {
+    transform: scale(1);
+  }
+
+  &__cabecalho {
+    @include flex-between;
+    padding: sp('xl');
+    border-bottom: $border-grafite;
+  }
+
+  &__titulo {
+    font-size: tipo('lg');
+  }
+
+  &__fechar {
+    @include btn-reset;
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    color: $cor-cinza-claro;
+    font-size: tipo('lg');
+    transition: color $trans-rapida;
+
+    &:hover { color: $cor-ouro; }
+  }
+
+  &__corpo {
+    padding: sp('xl');
+  }
+
+  &__rodape {
+    padding: sp('xl');
+    border-top: $border-grafite;
+    display: flex;
+    justify-content: flex-end;
+    gap: sp('md');
+  }
+}
+
+// --- Lightbox de galeria ---
+.lightbox {
+  .swiper-slide img { @extend %img-cover; }
+}

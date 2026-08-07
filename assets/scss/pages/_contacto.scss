@@ -1,0 +1,55 @@
+// Página de contacto
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.pagina-contacto {
+  padding-top: calc(#{$navbar-altura} + #{sp('2xl')});
+}
+
+.contacto-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('3xl');
+
+  @include respond-to('lg') { grid-template-columns: 1fr 1fr; }
+}
+
+.contacto-info {
+  &__item {
+    display: flex;
+    gap: sp('lg');
+    padding: sp('lg') 0;
+    border-bottom: $border-grafite;
+
+    i {
+      @include flex-center;
+      width: 48px;
+      height: 48px;
+      border-radius: raio('md');
+      background: $cor-ouro-muted;
+      color: $cor-ouro;
+      font-size: tipo('md');
+      flex-shrink: 0;
+    }
+
+    h4 { font-size: tipo('sm'); margin-bottom: sp('xs'); }
+    p { font-size: tipo('sm'); }
+  }
+
+  &__mapa {
+    margin-top: sp('xl');
+    border-radius: raio('lg');
+    overflow: hidden;
+    border: $border-grafite;
+
+    iframe { width: 100%; height: 320px; border: none; filter: grayscale(1) invert(0.92) contrast(0.9); }
+  }
+}
+
+.contacto-form-wrapper {
+  background: $cor-carbon;
+  border: $border-grafite;
+  border-radius: raio('lg');
+  padding: sp('2xl');
+}

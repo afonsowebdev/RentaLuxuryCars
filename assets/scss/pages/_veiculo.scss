@@ -1,0 +1,175 @@
+// Página individual do veículo
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.pagina-veiculo {
+  padding-top: calc(#{$navbar-altura} + #{sp('2xl')});
+}
+
+.veiculo-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('3xl');
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.6fr 1fr;
+  }
+}
+
+.veiculo-cabecalho {
+  margin-bottom: sp('xl');
+
+  &__marca {
+    color: $cor-ouro;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: tipo('sm');
+    font-weight: $peso-semibold;
+  }
+
+  &__nome {
+    font-size: tipo('3xl');
+    margin: sp('xs') 0 sp('md');
+  }
+
+  &__badges {
+    display: flex;
+    gap: sp('sm');
+    flex-wrap: wrap;
+  }
+}
+
+.ficha-tecnica {
+  margin-top: sp('3xl');
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: sp('lg');
+
+    @include respond-to('sm') { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  &__item {
+    background: $cor-carbon;
+    border: $border-grafite;
+    border-radius: raio('md');
+    padding: sp('lg');
+    text-align: center;
+
+    i { color: $cor-ouro; font-size: tipo('lg'); margin-bottom: sp('sm'); }
+  }
+
+  &__valor {
+    font-family: $font-display;
+    font-weight: $peso-bold;
+    font-size: tipo('md');
+    display: block;
+  }
+
+  &__label {
+    font-size: tipo('xs');
+    color: $cor-cinza-md;
+    text-transform: uppercase;
+  }
+}
+
+.caracteristicas-lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('sm');
+  margin-top: sp('lg');
+
+  @include respond-to('sm') { grid-template-columns: repeat(2, 1fr); }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: sp('sm');
+    color: $cor-cinza-claro;
+    font-size: tipo('sm');
+
+    i { color: $cor-ouro; }
+  }
+}
+
+// --- Widget de reserva sticky ---
+.widget-reserva {
+  background: $cor-carbon;
+  @include borda-ouro(0.25);
+  border-radius: raio('lg');
+  padding: sp('xl');
+  height: fit-content;
+
+  @include respond-to('lg') {
+    position: sticky;
+    top: calc(#{$navbar-altura} + #{sp('lg')});
+  }
+
+  &__preco {
+    display: flex;
+    align-items: baseline;
+    gap: sp('xs');
+    margin-bottom: sp('lg');
+    padding-bottom: sp('lg');
+    border-bottom: $border-grafite;
+  }
+
+  &__preco-valor {
+    font-family: $font-display;
+    font-size: tipo('2xl');
+    font-weight: $peso-bold;
+    @include texto-gradiente($grad-ouro);
+  }
+
+  &__preco-label { color: $cor-cinza-md; font-size: tipo('sm'); }
+
+  &__resumo {
+    margin-top: sp('lg');
+    padding-top: sp('lg');
+    border-top: $border-grafite;
+
+    div { @include flex-between; font-size: tipo('sm'); color: $cor-cinza-claro; margin-bottom: sp('sm'); }
+
+    &-total {
+      font-size: tipo('lg') !important;
+      font-weight: $peso-bold;
+      color: $cor-branco !important;
+      padding-top: sp('sm');
+      border-top: $border-grafite;
+    }
+  }
+
+  &__disponibilidade {
+    margin-top: sp('md');
+    font-size: tipo('xs');
+    text-align: center;
+  }
+}
+
+.extras-lista {
+  display: flex;
+  flex-direction: column;
+  gap: sp('md');
+  margin: sp('lg') 0;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: sp('sm');
+    padding: sp('md');
+    background: $cor-grafite;
+    border-radius: raio('sm');
+
+    label { display: flex; align-items: center; gap: sp('sm'); font-size: tipo('sm'); color: $cor-branco; }
+    i { color: $cor-ouro; }
+    small { display: block; color: $cor-cinza-md; font-size: tipo('xs'); margin-top: 2px; }
+    .preco { color: $cor-ouro; font-weight: $peso-semibold; font-size: tipo('sm'); white-space: nowrap; }
+  }
+}
+
+.veiculos-relacionados {
+  margin-top: sp('4xl');
+}
