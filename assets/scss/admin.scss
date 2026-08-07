@@ -1,0 +1,26 @@
+// ============================================================
+// ADMIN.SCSS — RentaLuxuryCars
+// Ponto de entrada do painel de administração.
+// ============================================================
+
+@use 'abstracts/variables' as *;
+@use 'abstracts/functions'  as *;
+@use 'abstracts/mixins'     as *;
+@use 'abstracts/placeholders';
+
+@use 'base/reset';
+@use 'base/root';
+@use 'base/typography';
+@use 'base/utilities';
+
+@use 'components/buttons';
+@use 'components/forms';
+@use 'components/badges';
+@use 'components/modal';
+@use 'components/spinner';
+@use 'components/tooltip';
+
+@use 'admin/admin-layout';
+@use 'admin/admin-tables';
+@use 'admin/admin-forms';
+@use 'admin/admin-charts';

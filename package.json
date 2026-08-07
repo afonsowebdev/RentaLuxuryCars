@@ -1,0 +1,12 @@
+{
+  "name": "luxdrive-portugal",
+  "version": "1.0.0",
+  "description": "RentaLuxuryCars — aluguer de automóveis de luxo",
+  "scripts": {
+    "sass:watch": "sass --watch assets/scss/main.scss:assets/css/main.css assets/scss/admin.scss:assets/css/admin.css --style=expanded --source-map",
+    "sass:build": "sass assets/scss/main.scss:assets/css/main.css assets/scss/admin.scss:assets/css/admin.css --style=compressed --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

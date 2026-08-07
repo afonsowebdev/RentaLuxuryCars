@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+[data-tooltip] {
+  position: relative;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: $cor-grafite;
+    color: $cor-branco;
+    font-size: tipo('xs');
+    padding: sp('xs') sp('md');
+    border-radius: raio('sm');
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $trans-rapida, transform $trans-rapida;
+    z-index: z('tooltip');
+    pointer-events: none;
+    @include borda-ouro(0.2);
+  }
+
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+}

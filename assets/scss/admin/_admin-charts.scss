@@ -1,0 +1,30 @@
+// Área dos gráficos (Chart.js)
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.admin-charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('xl');
+  margin-bottom: sp('2xl');
+
+  @include respond-to('lg') { grid-template-columns: 2fr 1fr; }
+}
+
+.chart-card {
+  background: $cor-carbon;
+  border: $border-grafite;
+  border-radius: raio('lg');
+  padding: sp('xl');
+
+  &__titulo {
+    font-size: tipo('md');
+    margin-bottom: sp('lg');
+  }
+
+  &__canvas-wrapper {
+    position: relative;
+    height: 280px;
+  }
+}

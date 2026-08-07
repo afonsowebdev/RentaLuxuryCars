@@ -1,0 +1,78 @@
+// Overrides do Swiper.js
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.swiper {
+  width: 100%;
+
+  &-button-next,
+  &-button-prev {
+    color: $cor-ouro;
+    background: rgba($cor-preto, 0.5);
+    width: 44px;
+    height: 44px;
+    border-radius: raio('full');
+    @include borda-ouro(0.3);
+    transition: all $trans-normal;
+
+    &::after { font-size: tipo('md'); }
+
+    &:hover {
+      background: $cor-ouro;
+      color: $cor-preto;
+    }
+  }
+
+  &-pagination-bullet {
+    background: $cor-cinza-md;
+    opacity: 0.6;
+    width: 8px;
+    height: 8px;
+
+    &-active {
+      background: $cor-ouro;
+      opacity: 1;
+      width: 24px;
+      border-radius: raio('full');
+    }
+  }
+
+  &-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// --- Galeria da página de veículo ---
+.galeria-veiculo {
+  &__principal {
+    @include aspect-ratio(16, 9);
+    border-radius: raio('lg');
+    overflow: hidden;
+    margin-bottom: sp('md');
+  }
+
+  &__thumbs {
+    .swiper-slide {
+      @include aspect-ratio(4, 3);
+      border-radius: raio('sm');
+      overflow: hidden;
+      opacity: 0.5;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all $trans-rapida;
+
+      &-thumb-active {
+        opacity: 1;
+        border-color: $cor-ouro;
+      }
+    }
+  }
+}
+
+// --- Carousel de depoimentos ---
+.swiper-depoimentos {
+  padding-bottom: sp('3xl') !important;
+}

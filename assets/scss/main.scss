@@ -1,0 +1,41 @@
+// ============================================================
+// MAIN.SCSS — RentaLuxuryCars
+// Ordem de importação é intencional — não alterar.
+// ============================================================
+
+// 1. Abstracts (sem output CSS próprio)
+@use 'abstracts/variables' as *;
+@use 'abstracts/functions'  as *;
+@use 'abstracts/mixins'     as *;
+@use 'abstracts/placeholders';
+
+// 2. Base
+@use 'base/reset';
+@use 'base/root';
+@use 'base/typography';
+@use 'base/utilities';
+
+// 3. Layout
+@use 'layout/grid';
+@use 'layout/navbar';
+@use 'layout/footer';
+@use 'layout/sections';
+
+// 4. Componentes
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+@use 'components/badges';
+@use 'components/modal';
+@use 'components/swiper';
+@use 'components/spinner';
+@use 'components/tooltip';
+
+// 5. Páginas
+@use 'pages/home';
+@use 'pages/frota';
+@use 'pages/veiculo';
+@use 'pages/reserva';
+@use 'pages/confirmacao';
+@use 'pages/sobre';
+@use 'pages/contacto';

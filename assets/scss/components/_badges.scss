@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: sp('xs');
+  padding: sp('xs') sp('md');
+  border-radius: raio('full');
+  font-size: tipo('xs');
+  font-weight: $peso-semibold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba($cor-branco, 0.08);
+  color: $cor-branco;
+  backdrop-filter: blur(6px);
+
+  &--ouro {
+    background: $cor-ouro-muted;
+    color: $cor-ouro-claro;
+    border: 1px solid rgba($cor-ouro, 0.4);
+  }
+
+  &--disponivel {
+    background: rgba($cor-sucesso, 0.15);
+    color: $cor-sucesso;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: raio('full');
+      background: $cor-sucesso;
+      animation: pulse 2s ease infinite;
+    }
+  }
+
+  &--indisponivel {
+    background: rgba($cor-erro, 0.15);
+    color: $cor-erro;
+  }
+
+  &--categoria {
+    background: rgba($cor-preto, 0.6);
+    color: $cor-ouro-claro;
+  }
+
+  &--estado-pendente   { background: rgba($cor-aviso, 0.15); color: $cor-aviso; }
+  &--estado-confirmada { background: rgba($cor-info, 0.15); color: $cor-info; }
+  &--estado-ativa      { background: rgba($cor-sucesso, 0.15); color: $cor-sucesso; }
+  &--estado-concluida  { background: rgba($cor-cinza-md, 0.2); color: $cor-cinza-claro; }
+  &--estado-cancelada  { background: rgba($cor-erro, 0.15); color: $cor-erro; }
+}

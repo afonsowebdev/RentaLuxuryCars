@@ -1,0 +1,32 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba($cor-ouro, 0.2);
+  border-top-color: $cor-ouro;
+  border-radius: raio('full');
+  animation: girar 800ms linear infinite;
+
+  &--sm { width: 20px; height: 20px; border-width: 2px; }
+  &--lg { width: 64px; height: 64px; border-width: 4px; }
+}
+
+.spinner-overlay {
+  @include flex-center;
+  padding: sp('3xl') 0;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, $cor-grafite 25%, $cor-grafite-md 50%, $cor-grafite 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: raio('sm');
+}
+
+@keyframes skeleton-loading {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

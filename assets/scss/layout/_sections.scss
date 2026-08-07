@@ -1,0 +1,30 @@
+// Padrões de secção (padding, widths)
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+.secao {
+  @include secao('4xl');
+
+  &--sm { @include secao('2xl'); }
+  &--sem-topo { padding-top: 0; }
+  &--sem-fundo { padding-bottom: 0; }
+
+  &--escura { background: $cor-carbon; }
+  &--grafite { background: $cor-grafite; }
+}
+
+.secao__cabecalho {
+  max-width: $max-width-texto;
+  margin-bottom: sp('3xl');
+
+  &--centro {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+.secao__container {
+  @include container;
+}

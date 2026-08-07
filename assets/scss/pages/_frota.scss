@@ -1,0 +1,114 @@
+// Página de frota + filtros
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.pagina-frota {
+  padding-top: calc(#{$navbar-altura} + #{sp('2xl')});
+}
+
+.frota-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: sp('2xl');
+
+  @include respond-to('lg') {
+    grid-template-columns: $sidebar-largura 1fr;
+  }
+}
+
+.filtros {
+  background: $cor-carbon;
+  border: $border-grafite;
+  border-radius: raio('lg');
+  padding: sp('xl');
+  height: fit-content;
+
+  @include respond-to('lg') {
+    position: sticky;
+    top: calc(#{$navbar-altura} + #{sp('lg')});
+  }
+
+  &__titulo {
+    font-size: tipo('md');
+    margin-bottom: sp('lg');
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__grupo {
+    margin-bottom: sp('xl');
+    padding-bottom: sp('xl');
+    border-bottom: $border-grafite;
+
+    &:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  }
+
+  &__grupo-titulo {
+    font-size: tipo('xs');
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $cor-ouro;
+    margin-bottom: sp('md');
+  }
+
+  &__opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: sp('sm');
+  }
+
+  &__limpar {
+    @include btn-reset;
+    color: $cor-cinza-claro;
+    font-size: tipo('xs');
+    text-decoration: underline;
+
+    &:hover { color: $cor-ouro; }
+  }
+}
+
+.frota-resultados {
+  &__topo {
+    @include flex-between;
+    margin-bottom: sp('xl');
+    flex-wrap: wrap;
+    gap: sp('md');
+  }
+
+  &__contagem {
+    color: $cor-cinza-claro;
+    font-size: tipo('sm');
+  }
+
+  &__vazio {
+    text-align: center;
+    padding: sp('4xl') 0;
+    color: $cor-cinza-claro;
+  }
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  gap: sp('sm');
+  margin-top: sp('3xl');
+
+  a, span {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: raio('sm');
+    border: $border-grafite;
+    color: $cor-cinza-claro;
+    font-size: tipo('sm');
+    transition: all $trans-rapida;
+  }
+
+  a:hover, .ativo {
+    background: $grad-ouro;
+    color: $cor-preto;
+    border-color: transparent;
+  }
+}

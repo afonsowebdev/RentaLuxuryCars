@@ -1,0 +1,95 @@
+// Página de confirmação
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins'    as *;
+
+.pagina-confirmacao {
+  padding-top: calc(#{$navbar-altura} + #{sp('3xl')});
+  min-height: 80vh;
+  @include flex-center;
+}
+
+.confirmacao-card {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  background: $cor-carbon;
+  @include borda-ouro(0.25);
+  border-radius: raio('xl');
+  padding: sp('4xl') sp('2xl');
+}
+
+.confirmacao-check {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto sp('xl');
+  border-radius: raio('full');
+  background: rgba($cor-sucesso, 0.12);
+  @include flex-center;
+
+  svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  circle {
+    stroke: $cor-sucesso;
+    stroke-width: 3;
+    fill: none;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    animation: risco-circulo 700ms ease forwards;
+  }
+
+  path {
+    stroke: $cor-sucesso;
+    stroke-width: 4;
+    fill: none;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: risco-check 400ms 700ms ease forwards;
+  }
+}
+
+@keyframes risco-circulo {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes risco-check {
+  to { stroke-dashoffset: 0; }
+}
+
+.confirmacao-referencia {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: tipo('lg');
+  color: $cor-ouro;
+  background: $cor-ouro-muted;
+  border: 1px solid rgba($cor-ouro, 0.3);
+  padding: sp('sm') sp('xl');
+  border-radius: raio('sm');
+  margin: sp('lg') 0 sp('2xl');
+  letter-spacing: 0.05em;
+}
+
+.confirmacao-instrucoes {
+  text-align: left;
+  background: $cor-grafite;
+  border-radius: raio('md');
+  padding: sp('xl');
+  margin: sp('2xl') 0;
+
+  h4 { font-size: tipo('sm'); color: $cor-ouro; margin-bottom: sp('md'); text-transform: uppercase; letter-spacing: 0.06em; }
+  p, li { color: $cor-cinza-claro; font-size: tipo('sm'); }
+  ul { margin-top: sp('sm'); padding-left: sp('lg'); list-style: disc; }
+}
+
+.confirmacao-acoes {
+  display: flex;
+  gap: sp('md');
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: sp('xl');
+}

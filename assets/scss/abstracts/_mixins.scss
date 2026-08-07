@@ -1,0 +1,194 @@
+// ============================================================
+// MIXINS — RentaLuxuryCars
+// ============================================================
+
+@use 'variables' as *;
+
+// --- Responsive (mobile-first) ---
+// Uso: @include respond-to('lg') { ... }
+@mixin respond-to($breakpoint) {
+  $valor: map-get($breakpoints, $breakpoint);
+  @if $valor {
+    @media (min-width: $valor) { @content; }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` não encontrado em $breakpoints.";
+  }
+}
+
+// Responsive max-width (desktop-first, para overrides pontuais)
+@mixin respond-below($breakpoint) {
+  $valor: map-get($breakpoints, $breakpoint);
+  @if $valor {
+    @media (max-width: ($valor - 1px)) { @content; }
+  }
+}
+
+// --- Flexbox helpers ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Posicionamento absoluto centrado ---
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// --- Pseudo-elemento de fundo ---
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// --- Imagem de fundo responsiva ---
+@mixin bg-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// --- Texto truncado com ellipsis ---
+@mixin truncar($linhas: 1) {
+  @if $linhas == 1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $linhas;
+    overflow: hidden;
+  }
+}
+
+// --- Smooth scrolling ---
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+// --- Botão base (reset) ---
+@mixin btn-reset {
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+// --- Gradiente de texto ---
+@mixin texto-gradiente($gradiente: $grad-ouro) {
+  background: $gradiente;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// --- Bordas com brilho dourado ---
+@mixin borda-ouro($opacidade: 0.3) {
+  border: 1px solid rgba($cor-ouro, $opacidade);
+}
+
+// --- Container centralizado ---
+@mixin container($max: $max-width) {
+  width: 100%;
+  max-width: $max;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: map-get($espaco, 'lg');
+  padding-right: map-get($espaco, 'lg');
+
+  @include respond-to('lg') {
+    padding-left: map-get($espaco, 'xl');
+    padding-right: map-get($espaco, 'xl');
+  }
+}
+
+// --- Aspeto ratio para imagens ---
+@mixin aspect-ratio($w, $h) {
+  aspect-ratio: #{$w} / #{$h};
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// --- Animação fade-in ---
+@mixin fade-in($duracao: $trans-normal, $atraso: 0ms) {
+  opacity: 0;
+  animation: fadeIn $duracao ease $atraso forwards;
+}
+
+// --- Visually hidden (acessibilidade) ---
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --- Scrollbar personalizada ---
+@mixin scrollbar-custom($largura: 6px, $cor-thumb: $cor-ouro, $cor-track: $cor-grafite) {
+  &::-webkit-scrollbar        { width: $largura; }
+  &::-webkit-scrollbar-track  { background: $cor-track; }
+  &::-webkit-scrollbar-thumb  {
+    background: $cor-thumb;
+    border-radius: map-get($raio, 'full');
+  }
+}
+
+// --- Secção com padding padrão ---
+@mixin secao($py: '4xl', $px: null) {
+  padding-top: map-get($espaco, $py);
+  padding-bottom: map-get($espaco, $py);
+  @if $px { padding-left: map-get($espaco, $px); padding-right: map-get($espaco, $px); }
+}
+
+// --- Typography scale helper ---
+@mixin tipo($tamanho) {
+  font-size: map-get($tipo-escala, $tamanho);
+}
+
+// --- Hover lift effect ---
+@mixin hover-lift($y: -4px, $sombra: $sombra-hover) {
+  transition: transform $trans-normal, box-shadow $trans-normal;
+
+  &:hover {
+    transform: translateY($y);
+    box-shadow: $sombra;
+  }
+}
+
+// --- Glass morphism ---
+@mixin glass($blur: 12px, $bg: rgba($cor-carbon, 0.8)) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
