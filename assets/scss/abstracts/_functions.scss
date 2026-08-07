@@ -3,6 +3,7 @@
 // ============================================================
 
 @use 'sass:math';
+@use 'sass:map';
 @use 'variables' as *;
 
 // Converter px para rem
@@ -12,8 +13,8 @@
 
 // Buscar cor do mapa $cores
 @function cor($nome) {
-  @if map-has-key($cores, $nome) {
-    @return map-get($cores, $nome);
+  @if map.has-key($cores, $nome) {
+    @return map.get($cores, $nome);
   }
   @warn "Cor `#{$nome}` não encontrada em $cores.";
   @return null;
@@ -21,8 +22,8 @@
 
 // Buscar espaçamento do mapa $espaco
 @function sp($tamanho) {
-  @if map-has-key($espaco, $tamanho) {
-    @return map-get($espaco, $tamanho);
+  @if map.has-key($espaco, $tamanho) {
+    @return map.get($espaco, $tamanho);
   }
   @warn "Espaçamento `#{$tamanho}` não encontrado em $espaco.";
   @return null;
@@ -30,8 +31,8 @@
 
 // Buscar tipografia do mapa $tipo-escala
 @function tipo($tamanho) {
-  @if map-has-key($tipo-escala, $tamanho) {
-    @return map-get($tipo-escala, $tamanho);
+  @if map.has-key($tipo-escala, $tamanho) {
+    @return map.get($tipo-escala, $tamanho);
   }
   @warn "Tamanho de tipo `#{$tamanho}` não encontrado em $tipo-escala.";
   @return null;
@@ -39,8 +40,8 @@
 
 // Buscar z-index do mapa $z
 @function z($camada) {
-  @if map-has-key($z, $camada) {
-    @return map-get($z, $camada);
+  @if map.has-key($z, $camada) {
+    @return map.get($z, $camada);
   }
   @warn "Z-index `#{$camada}` não encontrado em $z.";
   @return null;
@@ -48,8 +49,8 @@
 
 // Buscar raio do mapa $raio
 @function raio($tamanho) {
-  @if map-has-key($raio, $tamanho) {
-    @return map-get($raio, $tamanho);
+  @if map.has-key($raio, $tamanho) {
+    @return map.get($raio, $tamanho);
   }
   @return $tamanho; // fallback para valor directo
 }
